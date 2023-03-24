@@ -13,7 +13,7 @@ const HomeHeader = () => {
     <View style={styles.headerContainer}>
       <View style={styles.headerLeft}>
         <Image style={styles.avatar} source={avatar} />
-        <Text style={styles.headerText}>Erikaasav</Text>
+        <Text style={styles.headerText}>Hi, Utkarsh👋</Text>
       </View>
       <View style={styles.headerIcons}>
         <Feather name="bell" size={24} color="gray" />
