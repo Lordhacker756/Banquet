@@ -4,38 +4,12 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     paddingHorizontal: responsiveWidth(3),
-    paddingVertical: responsiveHeight(3)
+    paddingVertical: responsiveHeight(3),
+    backgroundColor: 'white',
   },
-  headerContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  headerLeft: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    columnGap: 10
-  },
-  headerIcons: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    columnGap: 15
-  },
-  headerText: {
-    fontSize: responsiveFontSize(2),
-    color: 'black',
-    fontWeight: 'bold'
-  },
-  avatar: {
-    height: responsiveWidth(11),
-    width: responsiveWidth(11),
-    borderRadius: 100,
-  },
-
   listHeader: {
     rowGap: 14,
-    marginVertical: responsiveHeight(1)
+    marginVertical: responsiveHeight(2)
   },
   listHeaderText: {
     fontSize: responsiveFontSize(4),
@@ -47,12 +21,12 @@ export default StyleSheet.create({
     borderRadius: 10,
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: 'lightgray',
+    backgroundColor: '#EDEDED',
     paddingHorizontal: responsiveWidth(3),
   },
   searchInput: {
     fontSize: responsiveFontSize(2),
-    color: 'gray',
+    marginLeft: responsiveWidth(2),
   },
   foodCategory: {
     flexDirection: 'row',
