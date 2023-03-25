@@ -17,13 +17,13 @@ const dishSlice = createSlice({
     initialState,
     reducers: {
         setDish: (state, action) => {
-            state.name = action.payload;
-            state.image = dishes[action.payload].image;
-            state.rating = dishes[action.payload].rating;
-            state.cooking_time = dishes[action.payload].cooking_time;
-            state.eating_time = dishes[action.payload].eating_time;
-            state.delivery_time = dishes[action.payload].delivery_time;
-            state.ingredients = dishes[action.payload].ingredients;
+            state.name = action.payload.replaceAll("_", " ");
+            state.image = dishes[action.payload.replaceAll("_", " ")].image;
+            state.rating = dishes[action.payload.replaceAll("_", " ")].rating;
+            state.cooking_time = dishes[action.payload.replaceAll("_", " ")].cooking_time;
+            state.eating_time = dishes[action.payload.replaceAll("_", " ")].eating_time;
+            state.delivery_time = dishes[action.payload.replaceAll("_", " ")].delivery_time;
+            state.ingredients = dishes[action.payload.replaceAll("_", " ")].ingredients;
         }
     }
 });

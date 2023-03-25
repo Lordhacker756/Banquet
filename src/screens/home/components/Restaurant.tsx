@@ -10,7 +10,7 @@ const Restaurant = ({index, restaurant}) => {
   const dispatch = useDispatch();
 
   const handlePress = (dish: string) => {
-    dispatch(setDish(dish));
+    dispatch(setDish(dish.replaceAll(' ', '_')));
     navigation.navigate('Details');
   };
 

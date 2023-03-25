@@ -5,10 +5,9 @@ export default StyleSheet.create({
     headerContainer: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        height: responsiveHeight(8),
+        height: responsiveHeight(10),
         alignItems: 'center',
         paddingHorizontal: responsiveWidth(3),
-        paddingTop: responsiveHeight(3),
         backgroundColor: 'white',
     },
     headerLeft: {

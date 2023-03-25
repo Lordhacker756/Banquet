@@ -11,10 +11,21 @@ import styles from './styles';
 import LinearGradient from 'react-native-linear-gradient';
 import Ionicon from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import {useRoute} from '@react-navigation/native';
+import {useDispatch} from 'react-redux';
+import {setDish} from '../../redux/dishSlice';
 
 const Details = () => {
-  const dish = useSelector((state: any) => state.dish);
-  console.log(dish);
+  const dispatch = useDispatch();
+  let dish;
+  const route = useRoute();
+  if (route.params) {
+    dispatch(setDish(route.params.dish));
+    dish = useSelector((state: any) => state.dish);
+  } else {
+    dish = useSelector((state: any) => state.dish);
+  }
+
   return (
     <View style={styles.container}>
       <ImageBackground style={styles.heroImage} source={dish.image}>

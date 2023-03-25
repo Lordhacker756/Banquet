@@ -1,4 +1,4 @@
-import {View, Text, Image, TouchableOpacity} from 'react-native';
+import {View, Text, Image, TouchableOpacity, Linking} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Feather from 'react-native-vector-icons/Feather';
 import {avatar} from '../assets/';
@@ -28,7 +28,7 @@ const DetailsHeader = ({navigation}) => {
     <View style={styles.detailHeader}>
       <TouchableOpacity
         style={styles.detailHeaderBtn}
-        onPress={() => navigation.goBack()}>
+        onPress={() => Linking.openURL('wobble://Home')}>
         <Ionicons name="chevron-back" size={25} color="gray" />
       </TouchableOpacity>
       <TouchableOpacity style={styles.detailHeaderBtn}>
