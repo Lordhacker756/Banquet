@@ -7,6 +7,8 @@ import React from 'react';
 import {Home, Details} from '../screens';
 const Stack = createNativeStackNavigator();
 import styles from './styles';
+import {useSelector} from 'react-redux';
+import Share from 'react-native-share';
 
 const HomeHeader = () => {
   return (
@@ -23,22 +25,34 @@ const HomeHeader = () => {
   );
 };
 
-const DetailsHeader = ({navigation}) => {
-  return (
-    <View style={styles.detailHeader}>
-      <TouchableOpacity
-        style={styles.detailHeaderBtn}
-        onPress={() => Linking.openURL('wobble://Home')}>
-        <Ionicons name="chevron-back" size={25} color="gray" />
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.detailHeaderBtn}>
-        <Ionicons name="share" size={25} color="gray" />
-      </TouchableOpacity>
-    </View>
-  );
-};
-
 export default function HomeStack() {
+  const DetailsHeader = () => {
+    return (
+      <View style={styles.detailHeader}>
+        <TouchableOpacity
+          style={styles.detailHeaderBtn}
+          onPress={() => Linking.openURL('wobble://Home')}>
+          <Ionicons name="chevron-back" size={25} color="gray" />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.detailHeaderBtn} onPress={handleShare}>
+          <Ionicons name="share" size={25} color="gray" />
+        </TouchableOpacity>
+      </View>
+    );
+  };
+  const dish = useSelector((state: any) => state.dish);
+  function handleShare() {
+    const deepLink = `wobble://Details/${dish.name}`;
+    const shareOptions = {
+      title: 'Share via',
+      message: `Check out this dish🍽️, ${dish.name} \n Copy this link and Past in browser👇🔗 \n${deepLink}`,
+    };
+    try {
+      Share.open(shareOptions);
+    } catch (error) {
+      console.log('Error =>', error);
+    }
+  }
   return (
     <Stack.Navigator>
       <Stack.Screen
