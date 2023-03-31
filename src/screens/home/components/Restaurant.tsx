@@ -1,16 +1,45 @@
 import {View, Text, ScrollView, Image, TouchableOpacity} from 'react-native';
-import React from 'react';
+import React, {useLayoutEffect} from 'react';
 import styles from '../styles';
 import {useNavigation} from '@react-navigation/native';
 import {useDispatch} from 'react-redux';
 import {setDish} from '../../../redux/dishSlice';
+import dynamicLinks from '@react-native-firebase/dynamic-links';
 
 const Restaurant = ({index, restaurant}) => {
   const navigation = useNavigation();
+
   const dispatch = useDispatch();
 
-  const handlePress = (dish: string) => {
-    dispatch(setDish(dish.replaceAll(' ', '_')));
+  const handleDynamicLink = (link: any) => {
+    // Handle dynamic link inside your own application
+    if (link?.url) {
+      const dish = link.url.split('/').pop();
+      dispatch(setDish(dish));
+      navigation.navigate('Details');
+    }
+  };
+
+  useLayoutEffect(() => {
+    const unsubscribe = dynamicLinks().onLink(handleDynamicLink);
+    return () => unsubscribe();
+  }, []);
+
+  useLayoutEffect(() => {
+    dynamicLinks()
+      .getInitialLink()
+      .then(link => {
+        if (link?.url) {
+          // dispath the action to set the dish
+          const dish = link.url.split('/').pop();
+          dispatch(setDish(dish));
+          navigation.navigate('Details');
+        }
+      });
+  }, []);
+
+  const handlePress = dishName => {
+    dispatch(setDish(dishName));
     navigation.navigate('Details');
   };
 

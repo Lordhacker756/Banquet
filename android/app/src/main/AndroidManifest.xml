@@ -29,14 +29,13 @@
                 android:scheme="wobble" />
         </intent-filter>
         
-        <intent-filter android:label="filter_react_native" android:autoVerify="true">
-            <action android:name="android.intent.action.VIEW" />
-            <category android:name="android.intent.category.DEFAULT" />
-            <category android:name="android.intent.category.BROWSABLE" />
-            <data android:scheme="http"
-                  android:host="www.wobble.com" />
-            <data android:scheme="wobble" />
-        </intent-filter>
+        <intent-filter>
+        <action android:name="android.intent.action.VIEW" />
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+        <data android:scheme="https"
+              android:host="wobbleai.page.link" />
+    </intent-filter>
       </activity>
     </application>
 </manifest>

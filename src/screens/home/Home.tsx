@@ -1,5 +1,5 @@
 import {View, Text, TextInput, ScrollView} from 'react-native';
-import React from 'react';
+import React, {useEffect} from 'react';
 import styles from './styles';
 import restaurants from '../../constants/restaurant';
 import {responsiveHeight} from 'react-native-responsive-dimensions';

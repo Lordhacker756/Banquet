@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "724853099054",
+    "project_id": "wobble-ai",
+    "storage_bucket": "wobble-ai.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:724853099054:android:099b413adccb501c51edbf",
+        "android_client_info": {
+          "package_name": "com.wobble"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "724853099054-r9ceh5c770tu9uetvcrua56untob2cab.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.wobble",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "724853099054-sfq5nbla99pj17vpgo0h1avueltlgk5l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBP5Cyt-AlOkjOjK5vmeraO7ApRil9DJxY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "724853099054-sfq5nbla99pj17vpgo0h1avueltlgk5l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

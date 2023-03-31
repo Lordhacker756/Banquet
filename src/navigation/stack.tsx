@@ -9,6 +9,16 @@ const Stack = createNativeStackNavigator();
 import styles from './styles';
 import {useSelector} from 'react-redux';
 import Share from 'react-native-share';
+import dynamicLinks from '@react-native-firebase/dynamic-links';
+
+async function buildLink(dishName: string) {
+  const link = await dynamicLinks().buildLink({
+    link: `https://wobbleai.page.link/${dishName}`,
+    domainUriPrefix: 'https://wobbleai.page.link',
+  });
+
+  return link;
+}
 
 const HomeHeader = () => {
   return (
@@ -41,8 +51,9 @@ export default function HomeStack() {
     );
   };
   const dish = useSelector((state: any) => state.dish);
-  function handleShare() {
-    const deepLink = `wobble://Details/${dish.name}`;
+
+  const handleShare = async () => {
+    const deepLink = await buildLink(dish.name);
     const shareOptions = {
       title: 'Share via',
       message: `Check out this dish🍽️, ${dish.name} \n Copy this link and Past in browser👇🔗 \n${deepLink}`,
@@ -52,7 +63,7 @@ export default function HomeStack() {
     } catch (error) {
       console.log('Error =>', error);
     }
-  }
+  };
   return (
     <Stack.Navigator>
       <Stack.Screen
