@@ -59,17 +59,17 @@ jobs:
 
       - name: install yarn dependencies
         run: |
-          cd packages/app-mobile/ios
+          cd ./ios
           yarn install
 
       - name: install Cocoapod dependencies
         run: |
-          cd packages/app-mobile/ios
+          cd ./ios
           pod install
 
       - name: build archive
         run: |
-          cd packages/app-mobile/ios
+          cd ./ios
           xcodebuild -workspace Wobble.xcworkspace \
           -scheme "Wobble" \
           -sdk iphoneos \
