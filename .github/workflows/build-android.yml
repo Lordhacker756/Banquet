@@ -30,6 +30,10 @@ jobs:
         run: |
           npm i -g corepack
           yarn install
+
+      - name: Change Gradle Wrapper Permissions
+        run: chmod +x ./android/gradlew
+
       - name: Build application
         run: |
           cd ./android
