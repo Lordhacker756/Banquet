@@ -11,32 +11,29 @@ const Restaurant = ({index, restaurant}) => {
 
   const dispatch = useDispatch();
 
-  const handleDynamicLink = (link: any) => {
-    // Handle dynamic link inside your own application
-    if (link?.url) {
-      const dish = link.url.split('/').pop();
-      dispatch(setDish(dish));
-      navigation.navigate('Details');
-    }
-  };
-
-  useLayoutEffect(() => {
-    const unsubscribe = dynamicLinks().onLink(handleDynamicLink);
-    return () => unsubscribe();
-  }, []);
-
   useLayoutEffect(() => {
     dynamicLinks()
       .getInitialLink()
       .then(link => {
-        if (link?.url) {
-          // dispath the action to set the dish
-          const dish = link.url.split('/').pop();
-          dispatch(setDish(dish));
-          navigation.navigate('Details');
-        }
+        handleDynamicLink(link);
       });
+    const linkingListener = dynamicLinks().onLink(handleDynamicLink);
+    return () => {
+      linkingListener();
+    };
   }, []);
+
+  const handleDynamicLink = link => {
+    if (!!link?.url) {
+      const dish = link.url.split('=').pop();
+      let formattedDish = dish.replace(/\+/g, '_');
+      console.log('deeplink=>', formattedDish);
+      dispatch(setDish(dish));
+      setTimeout(() => {
+        navigation.navigate('Details');
+      }, 100);
+    }
+  };
 
   const handlePress = dishName => {
     dispatch(setDish(dishName));
