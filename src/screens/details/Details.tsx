@@ -12,11 +12,14 @@ import LinearGradient from 'react-native-linear-gradient';
 import Ionicon from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useRoute} from '@react-navigation/native';
-import {useDispatch} from 'react-redux';
-import {setDish} from '../../redux/dishSlice';
-import dynamicLinks from '@react-native-firebase/dynamic-links';
 
 const Details = () => {
+  const route = useRoute();
+
+  if (route.params) {
+    console.log('The route params are: ', route.params);
+  }
+
   const dish = useSelector((state: any) => state.dish);
   console.log('The dish from the redux store is: ', dish);
 

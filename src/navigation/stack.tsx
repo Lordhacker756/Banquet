@@ -12,9 +12,12 @@ import Share from 'react-native-share';
 import dynamicLinks from '@react-native-firebase/dynamic-links';
 
 async function buildLink(dishName: string) {
-  const link = await dynamicLinks().buildLink({
-    link: `https://wobbleai.page.link/${dishName}`,
+  const link = await dynamicLinks().buildShortLink({
+    link: `https://wobbleai.page.link/share?dish=${dishName}`,
     domainUriPrefix: 'https://wobbleai.page.link',
+    android: {
+      packageName: 'com.wobbleai',
+    },
   });
 
   return link;
@@ -56,7 +59,7 @@ export default function HomeStack() {
     const deepLink = await buildLink(dish.name);
     const shareOptions = {
       title: 'Share via',
-      message: `Check out this dish🍽️, ${dish.name} \n Copy this link and Past in browser👇🔗 \n${deepLink}`,
+      message: `Check out this dish🍽️, ${dish.name} \n${deepLink}`,
     };
     try {
       Share.open(shareOptions);
