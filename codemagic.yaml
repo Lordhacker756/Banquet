@@ -3,11 +3,11 @@ workflows:
         name: iOS Build
         max_build_duration: 120
         instance_type: mac_mini_m1
-        vars:
-          BUNDLE_ID: 'org.reactjs.native.example.Wobble'
-          XCODE_WORKSPACE: 'Wobble.xcoworkspace'
-          XCODE_SCHEME: 'wobble'
         environment:
+          vars:
+            BUNDLE_ID: 'org.reactjs.native.example.Wobble'
+            XCODE_WORKSPACE: 'Wobble.xcoworkspace'
+            XCODE_SCHEME: 'wobble'
           node: v16.11.1
           xcode: latest
           cocoapods: default
